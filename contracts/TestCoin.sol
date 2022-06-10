@@ -24,7 +24,7 @@ contract TestCoin is ERC20 {
     }
 
     // mintable token with maximum supply of 1000000
-        function mint(address account, uint256 amount) public virtual override {
+        function mint(address account, uint256 amount) public virtual  {
         require(account != address(0), "ERC20: mint to the zero address");
         require(maxSupply >= initialSupply, "Insufficient Maximum Supply");
         // _beforeTokenTransfer(address(0), account, amount);
@@ -34,6 +34,30 @@ contract TestCoin is ERC20 {
         // emit Transfer(address(0), account, amount);
         _mint(account, amount);
         // _afterTokenTransfer(address(0), account, amount);
+    }
+
+    // //iterable mapping
+    // function getBalances() public view returns (address[], uint256[]) {
+    //     address[] memory addresses = new address[](_balances.length);
+    //     uint256[] memory balances = new uint256[](_balances.length);
+    //     uint256 i = 0;
+    //     for (address account in _balances) {
+    //         addresses[i] = account;
+    //         balances[i] = _balances[account];
+    //         i++;
+    //     }
+    //     return (addresses, balances);
+    // }
+
+
+    // iterative mapping
+
+    uint256[] indexes;
+    mapping (uint => uint) votes;
+
+    function add(uint data,uint index) public{
+    votes[index] = data;
+    indexes.push(index);
     }
     
 }
