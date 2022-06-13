@@ -11,6 +11,9 @@ contract TestCoin is ERC20 {
     // uint256 private _totalSupply;
     uint256 initialSupply = 100 * (10**18);
 
+    uint256[] indexes;
+    mapping (uint => uint) votes;
+
     constructor() ERC20("TestToken", "TEST") {
         // _mint(msg.sender, initialSupply);
     }
@@ -48,12 +51,6 @@ contract TestCoin is ERC20 {
     //     }
     //     return (addresses, balances);
     // }
-
-
-    // iterative mapping
-
-    uint256[] indexes;
-    mapping (uint => uint) votes;
 
     function add(uint data,uint index) public{
     votes[index] = data;
